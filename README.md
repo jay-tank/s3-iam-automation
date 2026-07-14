@@ -1,6 +1,6 @@
 <div align="center">
 
-# ☁️ s3-automation
+# ☁️ s3-iam-automation
 
 **Automate the repetitive AWS S3 + IAM setup — create a bucket, a scoped IAM user/group, a least-privilege policy, and access keys, in one `make` command.**
 
