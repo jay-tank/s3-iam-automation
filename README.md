@@ -23,14 +23,14 @@ It ships two variants:
 
 | Directory | Bucket type | Use for |
 | :--- | :--- | :--- |
-| [`s3_automation_private/`](s3_automation_private) | **Private** bucket | Internal/dev/staging data |
-| [`s3_automation_public/`](s3_automation_public) | **Public**-read bucket | Static assets meant to be served publicly |
+| [`s3-iam-automation_private/`](s3-iam-automation_private) | **Private** bucket | Internal/dev/staging data |
+| [`s3-iam-automation_public/`](s3-iam-automation_public) | **Public**-read bucket | Static assets meant to be served publicly |
 
 ## ✨ Features
 
 - 🪣 **Bucket creation** — creates the S3 bucket if it doesn't exist
 - 👤 **IAM user + group** — provisions a dedicated user and group
-- 🔒 **Least-privilege policy** — access scoped to a single folder in the bucket (see [`policy.json`](s3_automation_private/policy.json))
+- 🔒 **Least-privilege policy** — access scoped to a single folder in the bucket (see [`policy.json`](s3-iam-automation_private/policy.json))
 - 🔑 **Access keys** — generates an access key / secret and records them
 - ♻️ **Idempotent** — re-running skips resources that already exist
 - 🧩 **One command** — `make run_private` / `make run_public` orchestrates every step
@@ -56,13 +56,13 @@ aws configure    # Access Key, Secret, region, output format
 ## 🚀 Installation
 
 ```bash
-git clone https://github.com/jay-tank/s3_automation.git
-cd s3_automation
+git clone https://github.com/jay-tank/s3-iam-automation.git
+cd s3-iam-automation
 ```
 
 ## ⚙️ Configuration
 
-1. Pick a variant directory (`s3_automation_private` or `s3_automation_public`).
+1. Pick a variant directory (`s3-iam-automation_private` or `s3-iam-automation_public`).
 2. Edit **`input.txt`** with your names:
    ```
    UserName:s3_private_user
@@ -75,11 +75,11 @@ cd s3_automation
 
 ```bash
 # Private bucket
-cd s3_automation_private
+cd s3-iam-automation_private
 make run_private
 
 # Public bucket
-cd s3_automation_public
+cd s3-iam-automation_public
 make run_public
 ```
 
@@ -100,7 +100,7 @@ Each run executes the steps in order and writes the created **UserName / AccessK
 
 > ⚠️ **`output.txt` will contain a live AWS Access Key and Secret Key** after step 4. It is **git-ignored** — never commit it, store the keys in a secret manager, and rotate/delete keys you no longer need.
 
-- The attached IAM policy is **scoped to a single folder** in the bucket (least privilege) — review [`policy.json`](s3_automation_private/policy.json) before use.
+- The attached IAM policy is **scoped to a single folder** in the bucket (least privilege) — review [`policy.json`](s3-iam-automation_private/policy.json) before use.
 - Run with an AWS profile that has only the permissions it needs.
 
 ## 🤝 Contributing
