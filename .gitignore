@@ -1,0 +1,9 @@
+# Generated credentials — NEVER commit (holds live AWS Access/Secret keys)
+output.txt
+**/output.txt
+*.key
+*.pem
+
+# Local env
+.env
+.env.*
